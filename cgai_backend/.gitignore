@@ -1,0 +1,23 @@
+# --- Python & Django ---
+*.log
+*.pyc
+__pycache__/
+venv/
+.venv/
+env/
+*.swp
+
+# --- Database ---
+# Ignore the local development database
+db.sqlite3
+db.sqlite3-journal
+
+# --- Sensitive Files ---
+# NEVER commit your environment variables or secret keys
+.env
+serviceAccountKey.json
+*.json
+
+# --- IDE Files (Optional) ---
+.vscode/
+.idea/

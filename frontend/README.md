@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+⚛️ CGAI Frontend — Project Setup Guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend for the CGAI Project, built with React.
+It communicates with a Django REST backend and uses Firebase for authentication.
 
-## Available Scripts
+🧩 1. Firebase & Environment Setup (CRITICAL)
 
-In the project directory, you can run:
+Before running the project, you must set up Firebase and create a .env file.
 
-### `npm start`
+🔥 Step A: Get Your Firebase Config
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Go to the Firebase Console
+.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Open your CGAI project.
 
-### `npm test`
+Click the ⚙️ Settings icon → Project Settings.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Under the General tab, scroll down to Your apps.
 
-### `npm run build`
+Select your Web app (the one with the </> icon).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Find the firebaseConfig object — it looks like this:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const firebaseConfig = {
+  apiKey: "AIzaSy***************",
+  authDomain: "your-app.firebaseapp.com",
+  projectId: "your-app",
+  storageBucket: "your-app.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:abcdef123456",
+  measurementId: "G-XXXXXXX"
+};
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+You’ll need these values for your .env file.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+⚙️ Step B: Create Your .env File
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In the frontend root folder (same level as package.json), create a new file named .env.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Paste the following template and replace the placeholders with your Firebase credentials:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# --- React App Firebase Config ---
+# Get these values from your Firebase project settings
+REACT_APP_FIREBASE_API_KEY="YOUR_FIREBASE_API_KEY_HERE"
+REACT_APP_FIREBASE_AUTH_DOMAIN="YOUR_FIREBASE_AUTH_DOMAIN_HERE"
+REACT_APP_FIREBASE_PROJECT_ID="YOUR_FIREBASE_PROJECT_ID_HERE"
+REACT_APP_FIREBASE_STORAGE_BUCKET="YOUR_FIREBASE_STORAGE_BUCKET_HERE"
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID="YOUR_FIREBASE_SENDER_ID_HERE"
+REACT_APP_FIREBASE_APP_ID="YOUR_FIREBASE_APP_ID_HERE"
+REACT_APP_FIREBASE_MEASUREMENT_ID="YOUR_FIREBASE_MEASUREMENT_ID_HERE"
 
-## Learn More
+# --- Backend API URL ---
+# This should point to your local Django backend API
+REACT_APP_API_BASE_URL=http://127.0.0.1:8000/api
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+💡 Pro Tip:
+Make sure .env is listed in your .gitignore file so your secrets aren’t pushed to GitHub.
 
-### Code Splitting
+🧰 2. Available Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Once your .env file is ready, you can install and run the project.
 
-### Analyzing the Bundle Size
+📦 Install Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Run this once to install all the required dependencies:
 
-### Making a Progressive Web App
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+⚡ Start the Development Server
 
-### Advanced Configuration
+Launch the app in development mode:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+npm start
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This will automatically open the app at:
+👉 http://localhost:3000/
 
-### `npm run build` fails to minify
+⚠️ Important Note
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If your app was already running when you created or modified the .env file:
+
+Stop the server with Ctrl + C
+
+Then restart it with npm start
+Otherwise, your new environment variables won’t be loaded.
+
+🧠 You’re All Set!
+
+You now have:
+
+🔥 Firebase Authentication configured
+
+⚙️ React frontend connected to Django backend
+
+💻 A clean environment setup ready for development
